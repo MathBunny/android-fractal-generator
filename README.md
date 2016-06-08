@@ -1,3 +1,3 @@
 # Android Fractal Generator
 
-This application is currently in development. It currently renders nadelbrot sets. I am currently experimenting with OpenGL for faster rendering.
+This application is still under development. In this version, the application can output customized mandelbrot sets, but it will soon be optimized with OpenGL for faster performance.
