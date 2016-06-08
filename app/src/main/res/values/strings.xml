@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Fractles</string>
+    <string name="render_text">Render Mandelbrot Set Fractal</string>
+    <string name="scaling_factor">Scaling Factor:</string>
+    <string name="zoom_amount">Zoom Amount:</string>
+    <string name="height">Height:</string>
+    <string name="width">Width:</string>
+    <string name="color_shift">Color Shift:</string>
+    <string name="quality_depth">Quality (Depth):</string>
+    <string name="_default_scale">8</string>
+    <string name="_default_zoom">500</string>
+    <string name="default_max">Default (Max)</string>
+    <string name="default_max_width">Default (Max)</string>
+    <string name="_default_color">10</string>
+    <string name="_default_quality">570</string>
+</resources>
