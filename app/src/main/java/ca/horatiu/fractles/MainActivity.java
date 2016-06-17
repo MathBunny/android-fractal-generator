@@ -41,7 +41,9 @@ public class MainActivity extends Activity {
         int MAX_ITER =  570;
         int CONSTANT_SHIFT = 10;
         int ADDITIVE_FACTOR = 3;
-        boolean once = false;
+        int once = 0;
+        Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+        Bitmap bmp;
 
         Paint paint;
 
@@ -51,15 +53,18 @@ public class MainActivity extends Activity {
         }
 
         public void mandelbrotRenderBMP(Canvas canvas){
-            Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
-            Bitmap bmp = Bitmap.createBitmap(getWidth(), getHeight(), conf);
+            //Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+            //Bitmap bmp = Bitmap.createBitmap(getWidth(), getHeight(), conf);
 
             double zx, zy, cX, cY, tmp;
 
-            Log.d("Fractals", "hi!" + ADDITIVE_FACTOR);
+            Log.d("Fractals", "hi!" + ADDITIVE_FACTOR + " by: " + getWidth() + " " + getHeight());
 
             for (int y = 0; y < getHeight(); y+= ADDITIVE_FACTOR) {
+                Log.d("OK", "Ok so: " + y);
                 for (int x = 0; x < getWidth(); x+= ADDITIVE_FACTOR) {
+                    CustomizationScreen.progress.setProgress((((y*x)+x)/(getHeight()*getWidth()))*100);
+                    //Log.d("Progress: " + )
                     zx = zy = 0;
                     cX = (x - 400) / ZOOM;
                     cY = (y - 300) / ZOOM;
@@ -88,16 +93,6 @@ public class MainActivity extends Activity {
                     //canvas.drawRect(x, y, x + ADDITIVE_FACTOR, y + ADDITIVE_FACTOR, paint);
                 }
             }
-            //Canvas bmpCanvas = new Canvas(bmp);
-            //Insert all the rest of the drawing commands here
-
-            //Canvas myCanvas = new Canvas(bmp);
-//Insert all the rest of the drawing commands here
-            //canvas.drawBitmap(myCanvas, 0, 0);
-
-
-            //canvas.setBitmap(bmp);
-
             canvas.drawBitmap(bmp, new Matrix(), null);
             Log.d("Fractals", "Done!");
         }
@@ -106,8 +101,8 @@ public class MainActivity extends Activity {
             int width = getWidth();
             int height = getHeight();
             int radius;
-            if (!once) {
-                once = true;
+            if (once < 2) {
+                once++;
                 Paint paint = new Paint();
                 paint.setStyle(Paint.Style.FILL);
                 paint.setColor(Color.WHITE);
@@ -139,16 +134,6 @@ public class MainActivity extends Activity {
                     }
                 }
                 Log.d("Fractals", "Done!");
-
-                // Color a = Color.rgb(1, 2, 3);
-                // Use Color.parseColor to define HTML colors
-
-                //canvas.drawCircle(width / 2, height / 2, 100, paint);
-                /*for (int x = 0; x < 100; x++)
-                    canvas.drawRect(x, 100, x + 1, 100 + 1, paint);
-                paint.setColor(Color.parseColor("#CD5C5C"));
-
-                canvas.drawCircle(width / 2, height / 2, 10, paint);*/
             }
         }
 
@@ -156,7 +141,13 @@ public class MainActivity extends Activity {
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
             //mandelbrotRender(canvas);
-            mandelbrotRenderBMP(canvas);
+            if (once <2) {
+                if (once == 0)
+                    bmp= Bitmap.createBitmap(getWidth(), getHeight(), conf);
+                mandelbrotRenderBMP(canvas);
+                once++;
+            }
+
         }
     }
 }

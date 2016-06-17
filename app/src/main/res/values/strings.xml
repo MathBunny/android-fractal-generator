@@ -13,4 +13,6 @@
     <string name="default_max_width">Default (Max)</string>
     <string name="_default_color">10</string>
     <string name="_default_quality">570</string>
+    <string name="loading_progress">Loading Progress</string>
+    <string name="loading">Progress:</string>
 </resources>

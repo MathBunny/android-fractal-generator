@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.content.Intent;
-
-
+import android.widget.ProgressBar;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 
 public class CustomizationScreen extends AppCompatActivity {
@@ -17,11 +18,18 @@ public class CustomizationScreen extends AppCompatActivity {
     public final static String COLOR_SHIFT = "ca.horatiulazu.fractals.COLOR_SHIFT";
     public final static String QUALITY_DEPTH = "ca.horatiulazu.fractals.QUALITY_DEPTH";
 
+    public static ProgressBar progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customization_screen);
+    }
+
+    public void addProgressBar(){
+        CustomizationScreen.progress = (ProgressBar)findViewById(R.id.progressBar);
+        //progress.setProgress(progressVal);
     }
 
     public void render(View view){
@@ -82,6 +90,8 @@ public class CustomizationScreen extends AppCompatActivity {
         render.putExtra(WIDTH, width);
         render.putExtra(COLOR_SHIFT, colorShift);
         render.putExtra(QUALITY_DEPTH, qualityDepth);
+        //render.putExtra("PROGRESS", (ProgressBar)findViewById(R.id.progressBar));
+        addProgressBar();
         startActivity(render);
     }
 }

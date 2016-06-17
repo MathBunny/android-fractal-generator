@@ -1,3 +1,9 @@
-# Android Fractal Generator
+# Android Mandelbrot Set Fractal Generator
 
-This application is still under development. In this version, the application can output customized mandelbrot sets, but it will soon be optimized with OpenGL for faster performance.
+##Features
+* Allows for the rendering of a mandelbrot set fractal.
+* Allows for the customization of the depth, color shift, and quality of the image
+* Images are drawn as a bitmap using canvas
+
+##Screenshot
+![Screenshot](/screenshots/AndroidFractals.png)
